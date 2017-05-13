@@ -1,5 +1,5 @@
 
-user = {
+var user = {
     contacts : {
         phones : {
             mobile : ['+380503032120', '+380500000000'],
