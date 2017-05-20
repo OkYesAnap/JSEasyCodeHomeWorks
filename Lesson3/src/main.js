@@ -99,7 +99,7 @@ function fizzBuzz1(num) { //Решение КУРИЛЬЩИКА
   return (((num % 3 == 0) && (num % 5 == 0)) ? 'FizzBuzz' : 
           ((num % 5 == 0) ? 'Buzz' : 
             (((num % 3 == 0) ? 'Fizz' :
-            num))));// это не смайл :)
+            num))));
 }
 
 function fizzBuzz2(num) { //Решение ЗДОРОВОГО ЧЕЛОВЕКА
