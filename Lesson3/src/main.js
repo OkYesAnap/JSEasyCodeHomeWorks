@@ -144,4 +144,4 @@ function strangeFunc(argument1, argument2, argument3, argument4){
   argument4(locArray);
 }
 
-strangeFunc ("Panaseyko","Andrew","Vasilevich",console.log);
+strangeFunc ("Panaseyko", "Andrew", "Vasilevich", console.log);
