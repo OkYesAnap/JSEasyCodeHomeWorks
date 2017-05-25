@@ -47,10 +47,11 @@ function fizzBuzz(num) {// функция для второго задания
 let arr = [1, null, undefined, 'str', {}, [], function() {}];
 
 function arrayTypes(arrayT){
+    newArray =[];
 for (var i =0; i < arrayT.length; i++ ){
-arrayT[i] = typeof(arrayT[i]);
+newArray[i] = typeof(arrayT[i]);
 }
-return(arrayT);
+return(newArray);
 } 
 console.log(arrayTypes(arr));
 /*
