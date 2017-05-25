@@ -7,11 +7,11 @@
      var returnArray =[];
  	 if (b == undefined){//если нет 2го параметра делам 2 задание:) 
 		for (var i = 0; i <= a; i++){
-        returnArray.push(fizzBuzz(i)); // вот тут вызывается функция для 2го задания
+        returnArray.push(fizzBuzz(i));
 	    }
 	 }
 	 else {
-	     a++; //это шоб не брало первое значание
+        a++; //это шоб не брало первое значание
 		for (var i = a; i < b; i++){
         returnArray.push(i);
         }
