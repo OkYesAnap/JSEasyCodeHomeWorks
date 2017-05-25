@@ -8,13 +8,13 @@
  	 if (b == undefined){//если нет 2го параметра делам 2 задание:) 
 		for (var i = 0; i <= a; i++){
         returnArray.push(fizzBuzz(i)); // вот тут вызывается функция для 2го задания
-	 }
+	    }
 	 }
 	 else {
 	     a++; //это шоб не брало первое значание
 		for (var i = a; i < b; i++){
         returnArray.push(i);
-     }
+        }
 	 }
      return returnArray;
  }
@@ -48,10 +48,10 @@ let arr = [1, null, undefined, 'str', {}, [], function() {}];
 
 function arrayTypes(arrayT){
     newArray =[];
-for (var i =0; i < arrayT.length; i++ ){
-newArray[i] = typeof(arrayT[i]);
-}
-return(newArray);
+    for (var i =0; i < arrayT.length; i++ ){
+        newArray[i] = typeof(arrayT[i]);
+    }
+    return(newArray);
 } 
 console.log(arrayTypes(arr));
 /*
@@ -73,9 +73,9 @@ let array = Array.from({ length: 35 }).map(
 
 function solution(arr) {
     for(let i = 0; i < arr.length; i++){
-    if (isNaN(arr[i].age)){
-        arr[i].unknownAge = true;
-    }
+        if (isNaN(arr[i].age)){
+            arr[i].unknownAge = true;
+            }
     }
     return arr;
 }
