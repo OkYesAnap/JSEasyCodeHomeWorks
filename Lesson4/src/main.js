@@ -49,7 +49,7 @@ let arr = [1, null, undefined, 'str', {}, [], function() {}];
 function arrayTypes(arrayT){
     let newArray =[];
     for (var i =0; i < arrayT.length; i++ ){
-    newArray[i] = typeof(arrayT[i]);
+        newArray[i] = typeof(arrayT[i]);
     }
     return(newArray);
 } 
