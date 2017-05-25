@@ -3,29 +3,29 @@
  и возвращает массив содержащий числа между первым числом и вторым числом;
  */
 //первое и второе задание слепил в кучу
- function numbersBetween(a, b) {
-     var returnArray =[];
- 	 if (b == undefined){//если нет 2го параметра делам 2 задание:) 
-		for (var i = 0; i <= a; i++){
+function numbersBetween(a, b) {
+    var returnArray =[];
+    if (b == undefined){//если нет 2го параметра делам 2 задание:) 
+        for (var i = 0; i <= a; i++){
         returnArray.push(fizzBuzz(i));
-	    }
-	 }
-	 else {
+        }
+    }
+    else {
         a++; //это шоб не брало первое значание
-		for (var i = a; i < b; i++){
+    	for (var i = a; i < b; i++){
         returnArray.push(i);
         }
-	 }
-     return returnArray;
- }
+    }
+    return returnArray;
+}
 
 function fizzBuzz(num) {// функция для второго задания
   /* Ваш код здесь */
-  return (num === 0 ? '0 деленный на число будет 0' :
-          (((num % 3 == 0) && (num % 5 == 0)) ? 'FizzBuzz' : 
-            ((num % 5 == 0) ? 'Buzz' : 
-              (((num % 3 == 0) ? 'Fizz' :
-                num)))));
+    return (num === 0 ? '0 деленный на число будет 0' :
+            (((num % 3 == 0) && (num % 5 == 0)) ? 'FizzBuzz' : 
+                ((num % 5 == 0) ? 'Buzz' : 
+                    (((num % 3 == 0) ? 'Fizz' :
+                        num)))));
 	}
  console.log(numbersBetween(1, 5)); // 2,3,4
  console.log(numbersBetween(3, 6)); // 4,5
@@ -47,9 +47,9 @@ function fizzBuzz(num) {// функция для второго задания
 let arr = [1, null, undefined, 'str', {}, [], function() {}];
 
 function arrayTypes(arrayT){
-    newArray =[];
+    let newArray =[];
     for (var i =0; i < arrayT.length; i++ ){
-        newArray[i] = typeof(arrayT[i]);
+    newArray[i] = typeof(arrayT[i]);
     }
     return(newArray);
 } 
@@ -65,7 +65,7 @@ console.log(arrayTypes(arr));
  */
 
 let array = Array.from({ length: 35 }).map(
-  (value, index) => (index % 2 ? { age: index + 2 } : { age: NaN })
+    (value, index) => (index % 2 ? { age: index + 2 } : { age: NaN })
 );
 
 //console.log(array); // [ {age:NaN}, {age:3}, {age:NaN}, {age:5}, {age:NaN}, {age:7} ....]
