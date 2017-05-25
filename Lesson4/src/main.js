@@ -26,7 +26,7 @@ function fizzBuzz(num) {// функция для второго задания
                 ((num % 5 == 0) ? 'Buzz' : 
                     (((num % 3 == 0) ? 'Fizz' :
                         num)))));
-	}
+}
  console.log(numbersBetween(1, 5)); // 2,3,4
  console.log(numbersBetween(3, 6)); // 4,5
  console.log(numbersBetween(12, 15)); // 13,14
