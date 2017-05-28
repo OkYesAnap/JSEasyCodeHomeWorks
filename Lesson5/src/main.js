@@ -139,7 +139,6 @@ function openBraces(arr, arrNoBraces) {
             openBraces(arr[i], arrNoBraces);
         }
         else{
-            console.log(arr[i]);
             arrNoBraces.push(arr[i]);
         }
     }
