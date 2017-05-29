@@ -14,15 +14,15 @@ let arr1 = [1, false, 2, 0, 3, null, 0, 4, 0, 25];
 //arr1 = [ 'a', 0, 0, 'b', null, 'c', 'd', 0, 1, false, 0, 1, 0, 3, [], 0, 1, 9, 0, 0, {}, 0, 0, 9 ];
 function moveZeroToEnd(arr){
 	
-    let lookingFor = 0;
-    let zeroArray = [];
-    for (let i = 0; i < arr.length; ){
-        if (arr[i] === lookingFor){
-            arr.splice(i, 1);
-            zeroArray.push(lookingFor);
-        }
+	let lookingFor = 0;
+	let zeroArray = [];
+	for (let i = 0; i < arr.length; ){
+		if (arr[i] === lookingFor){
+			arr.splice(i, 1);
+			zeroArray.push(lookingFor);
+		}
 		i++;
-    }
+	}
     return arr.concat(zeroArray);
 }
 console.log(moveZeroToEnd(arr1));
@@ -37,12 +37,12 @@ console.log(moveZeroToEnd(arr1));
  */
 function orderNumbers(a, b){// WTF????
 
-    return a - b;
+	return a - b;
 }
 function minimalNumber(arr){
 	
-    let a = arr.sort(orderNumbers);//Вот эту МАГИЮ Я РЕАЛЬНО НЕ ВКУРИЛ КАК ЭТО РАБОТЕТ???
-    return a.shift() + a.shift();
+	let a = arr.sort(orderNumbers);//Вот эту МАГИЮ Я РЕАЛЬНО НЕ ВКУРИЛ КАК ЭТО РАБОТЕТ???
+	return a.shift() + a.shift();
 }
 console.log(minimalNumber([10,20,30,1,31,11,10]));
 /*
@@ -53,7 +53,7 @@ console.log(minimalNumber([10,20,30,1,31,11,10]));
  */
 function nameShuffler(name){
 	
-	    return name.slice(name.indexOf(' '), name.length) + ' ' + name.slice(0 ,name.indexOf(' '));
+	return name.slice(name.indexOf(' '), name.length) + ' ' + name.slice(0 ,name.indexOf(' '));
 }
 
 console.log(nameShuffler('john McClane'));
@@ -68,10 +68,10 @@ console.log(nameShuffler('James Bond'));
  */
 function capMe(arr){
 	
-    for (var i = 0; i < arr.length; i++){
-        arr[i] = arr[i][0].toUpperCase() + arr[i].slice(1).toLowerCase();
+	for (var i = 0; i < arr.length; i++){
+		arr[i] = arr[i][0].toUpperCase() + arr[i].slice(1).toLowerCase();
     }
-    return arr;
+	return arr;
 }
 
 console.log(capMe(['KARLY', 'DANIEL', 'KELSEY']));
@@ -90,24 +90,24 @@ console.log(capMe(['jo', 'nelson', 'jurie']));
  */
 function steps(arr){
 	
-    let maxStep = 0;
-    let index = 0;
-    if (arr[0] !== 0){
-        arr.unshift(0); // для коректного поиска с 0;
-    }
-    for (let i = 0; i + 1 < arr.length; i++){
-        if (maxStep < (arr[i + 1] - arr[i])){
-            maxStep = (arr[i + 1] - arr[i]);
-            index = i;
-        }
-    }
-    return arr[index] + maxStep/2;
+	let maxStep = 0;
+	let index = 0;
+	if (arr[0] !== 0){
+		arr.unshift(0); // для коректного поиска с 0;
+	}
+	for (let i = 0; i + 1 < arr.length; i++){
+		if (maxStep < (arr[i + 1] - arr[i])){
+			maxStep = (arr[i + 1] - arr[i]);
+			index = i;
+		}
+	}
+	return arr[index] + maxStep/2;
 }
 
 function random(arr) {
 	
-    console.log(arr);
-    console.log('Пропущеное число: ' + steps(arr));
+	console.log(arr);
+	console.log('Пропущеное число: ' + steps(arr));
 }
 
 random([1, 3, 5, 9]);
@@ -128,15 +128,15 @@ random([0, 16, 24, 32]);
  */
 
 function openBraces(arr, arrNoBraces) {
-    for (let i = 0; i < arr.length; i++){
-        if (Array.isArray(arr[i])){
-            openBraces(arr[i], arrNoBraces);
-        }
-        else{
-            arrNoBraces.push(arr[i]);
-        }
-    }
-    return arrNoBraces;
+	for (let i = 0; i < arr.length; i++){
+		if (Array.isArray(arr[i])){
+			openBraces(arr[i], arrNoBraces);
+		}
+		else{
+			arrNoBraces.push(arr[i]);
+		}
+	}
+	return arrNoBraces;
 }
 
 console.log(openBraces ([[1,2],[3,[4]],5, 10], []));// второй параметн пустой массив в который будут напихиваться вскрытые данные
