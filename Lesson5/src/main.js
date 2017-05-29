@@ -13,14 +13,15 @@
 let arr1 = [1, false, 2, 0, 3, null, 0, 4, 0, 25];
 //arr1 = [ 'a', 0, 0, 'b', null, 'c', 'd', 0, 1, false, 0, 1, 0, 3, [], 0, 1, 9, 0, 0, {}, 0, 0, 9 ];
 function moveZeroToEnd(arr){
+	
     let lookingFor = 0;
     let zeroArray = [];
-    for (let i = 0; i < arr.length; i++){
-        if (arr[i] === lookingFor) {
+    for (let i = 0; i < arr.length; ){
+        if (arr[i] === lookingFor){
             arr.splice(i, 1);
             zeroArray.push(lookingFor);
-            i--;
         }
+		i++;
     }
     return arr.concat(zeroArray);
 }
@@ -35,9 +36,11 @@ console.log(moveZeroToEnd(arr1));
  
  */
 function orderNumbers(a, b){// WTF????
+
     return a - b;
 }
 function minimalNumber(arr){
+	
     let a = arr.sort(orderNumbers);//Вот эту МАГИЮ Я РЕАЛЬНО НЕ ВКУРИЛ КАК ЭТО РАБОТЕТ???
     return a.shift() + a.shift();
 }
@@ -49,20 +52,8 @@ console.log(minimalNumber([10,20,30,1,31,11,10]));
  nameShuffler('James Bond'); => "Bond James"
  */
 function nameShuffler(name){
-let arr = name.split('');
-let onlyName = [];
-    for(let i = 0; i < arr.length; i++){
-        if (arr[i] != ' '){
-            onlyName.push(arr.shift());
-            i--;
-        }
-        else{
-            arr.shift(arr.push(' '));
-            break;
-        }
-    }
-
-    return (arr.concat(onlyName)).join('');
+	
+	    return name.slice(name.indexOf(' '), name.length) + ' ' + name.slice(0 ,name.indexOf(' '));
 }
 
 console.log(nameShuffler('john McClane'));
@@ -76,6 +67,7 @@ console.log(nameShuffler('James Bond'));
  capMe(['KARLY', 'DANIEL', 'KELSEY']) // returns ['Karly', 'Daniel', 'Kelsey']
  */
 function capMe(arr){
+	
     for (var i = 0; i < arr.length; i++){
         arr[i] = arr[i][0].toUpperCase() + arr[i].slice(1).toLowerCase();
     }
@@ -97,6 +89,7 @@ console.log(capMe(['jo', 'nelson', 'jurie']));
   
  */
 function steps(arr){
+	
     let maxStep = 0;
     let index = 0;
     if (arr[0] !== 0){
@@ -112,6 +105,7 @@ function steps(arr){
 }
 
 function random(arr) {
+	
     console.log(arr);
     console.log('Пропущеное число: ' + steps(arr));
 }
