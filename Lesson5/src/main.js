@@ -128,7 +128,7 @@ random([0, 16, 24, 32]);
  
  */
 
-function openBraces(arr, arrNoBraces) {
+function openBraces(arr, arrNoBraces = []) {
 	for (let i = 0; i < arr.length; i++){
 		if (Array.isArray(arr[i])){
 			openBraces(arr[i], arrNoBraces);
@@ -140,7 +140,7 @@ function openBraces(arr, arrNoBraces) {
 	return arrNoBraces;
 }
 
-console.log(openBraces ([[1,2],[3,[4]],5, 10], []));// второй параметн пустой массив в который будут напихиваться вскрытые данные
-console.log(openBraces ([25,10,[10,[15]]], []));
+console.log(openBraces ([[1,2],[3,[4]],5, 10]));
+console.log(openBraces ([25,10,[10,[15]]]));
 
 
