@@ -11,15 +11,16 @@
  */
 
 let arr1 = [1, false, 2, 0, 3, null, 0, 4, 0, 25];
-//arr1 = [ 'a', 0, 0, 'b', null, 'c', 'd', 0, 1, false, 0, 1, 0, 3, [], 0, 1, 9, 0, 0, {}, 0, 0, 9 ];
+arr1 = [ 'a', 0, 0, 'b', null, 'c', 'd', 0, 1, false, 0, 1, 0, 3, [], 0, 1, 9, 0, 0, {}, 0, 0, 9 ];
 function moveZeroToEnd(arr){
 	
 	let lookingFor = 0;
 	let zeroArray = [];
-	for (let i = 0; i < arr.length; ){
+	for (let i = 0; i < arr.length;){
 		if (arr[i] === lookingFor){
 			arr.splice(i, 1);
 			zeroArray.push(lookingFor);
+			continue;
 		}
 		i++;
 	}
