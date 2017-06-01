@@ -342,11 +342,8 @@ let javaScript = {
 
 
 function countLetterA(randStr) {
-  //let newArr = randStr.split('');
-    return  randStr.split('').filter(function(elem){
-              if (elem == 'a'){
-                return true;
-              }
+  return  randStr.split('').filter(function(elem){
+      return elem == 'a';
             }).length;
 }
 

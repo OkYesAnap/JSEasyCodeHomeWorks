@@ -50,7 +50,7 @@ console.log(minimalNumber([10,20,30,1,31,11,10]));
  nameShuffler('James Bond'); => "Bond James"
  */
 function nameShuffler(name){
-	return name.slice(name.indexOf(' '), name.length) + ' ' + name.slice(0 ,name.indexOf(' '));
+	return name.split(' ').reverse().join(' ');
 }
 
 console.log(nameShuffler('john McClane'));
