@@ -446,7 +446,7 @@ console.log(wordCounter('url http url www url http'));
  */
 
 function createHashTags(arr) {
-    obj = {}
+    let obj = {}
     listOfCompanys.forEach(function(val) {
         obj[val._id] = val.company;
     })
