@@ -1,23 +1,4 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Marketplace
-Gist
- @OkYesAnap
- Sign out
- Watch 1
-  Star 0
-  Fork 1 OlegLustenko/JavaScript_Basic-summer
- Code  Issues 0  Pull requests 0  Projects 0  Wiki Insights 
-Branch: master Find file Copy pathJavaScript_Basic-summer/classworks/lesson 8/homework/home.js
-9ed3bb7  8 hours ago
-@OlegLustenko OlegLustenko lesson 8
-1 contributor
-RawBlameHistory     
-83 lines (67 sloc)  2.42 KB
-'use strict';
+//'use strict';
 
 /*
  *
@@ -29,16 +10,20 @@ RawBlameHistory
  *
  * 
  * */
-
 function solution1() {
-  /*ВАШ КОД*/
+  let str = "";
+  let args = [];
+  return function(arg) {
+    args.push(arg);
+    return (str += arg + " ");
+  };
 }
 
-let stringBuffer = solution1();
 
+let stringBuffer = solution1();
 stringBuffer('Замыкания'); // Замыкания
 stringBuffer('Использовать нужно'); // Замыкания Использовать нужно
-stringBuffer('Привет'); // Замыкания Использовать нужно Привет
+console.log(stringBuffer('Привет')); // Замыкания Использовать нужно Привет
 // вызываем много раз
 
 /*
@@ -48,13 +33,32 @@ stringBuffer('Привет'); // Замыкания Использовать н�
  * из скобочек и посчитайте, * что все скобочки закрываются корректно
  *
  * */
+openBra =  ["", "(", "[", "{"]; //набор открывающихся скобок
+closeBra = ["", ")", "]", "}"]; //набор закрывающихся скобок (индексы должны соответствовать)
+function validBraces(str) {
+  console.log(str);
+  let opened = [];
+  for (let i = 0; i < str.length; i++) {
+    if (openBra.indexOf(str[i]) > 0) {// проверка есть ли в массиве открытых скобок
+      opened.push(str[i]); // если есть добавляем в массив открытые скобки
+    }
+    if (closeBra.indexOf(str[i]) > 0) {// проверка есть ли в массиве закрытых скобок
+      if (openBra.indexOf(opened[opened.length - 1]) - closeBra.indexOf(str[i]) !==0) {
+        return false;// если индекс последней открытой скобки минус индекс закрытой не 0 тогда false 
+      } else {
+        opened.pop();//если 0 значит скобка какая открыла такая и закрыла удаляем последнюю открытую
+      }
+    }
+  }
+  return (opened.length == 0 ? true : false) // если в конце массив пуст значит все открытые скобки закрылись 
+}
 
-function validBraces(str) {}
 
-validBraces('(){}[]'); //=> returns true
-validBraces('(}'); //=> returns false
-validBraces('[(])'); // => returns false
-validBraces('([{}])'); //=> returns true
+console.log(validBraces('(){}[]')); //=> returns true
+console.log(validBraces('(}')); //=> returns false
+console.log(validBraces('[(])')); // => returns false
+console.log(validBraces('([{}])')); //=> returns true
+console.log(validBraces('{([()(()){}])}')); //=> returns true
 
 /*
  *
@@ -70,6 +74,9 @@ function makeCallback(fn) {
   for (let i = 1; i <= 10; i++) {
     setTimeout(function() {
       console.log(i);
+      if (i == 10){
+        fn();
+      }
     }, i * 1000);
   }
 }
@@ -91,13 +98,36 @@ makeCallback(function() {
  * Значение взято из кэша
  *
  * */
+// function fnc(n) {
+//   let summ = 0;
+//   for (let i = 0; i <= n; i++) {
+//     summ += i;
+//   }
+//   return { [n]: summ };
+// }
 
-function sum(num) {}
+function sum1(num) {
+  let cash = {};
+  return function(n) {
+    let summ = 0;
+    for (let i = 0; i <= n; i++) {
+      summ += i;
+    }
+    if (cash[n] == undefined) {
+      cash[n] = summ;
+      console.log(`${cash[n]} Новое значение`);
+    } else {
+      console.log(`${cash[n]} Из кеша`);
+    }
+  };
+}
+
+let sum = sum1();
 
 sum(5); // 15 Значение кешировано
 sum(5); // 15 Значение взято из кэша
 
 sum(6); // 21 Кешировано
 sum(6); // 21 Значение взято из кэша
-Contact GitHub API Training Shop Blog About
-© 2017 GitHub, Inc. Terms Privacy Security Status Help
+// console.log(sum1(6));
+// console.log(sum1(7));
