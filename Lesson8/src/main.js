@@ -106,28 +106,23 @@ makeCallback(function() {
 //   return { [n]: summ };
 // }
 
-function sum1(num) {
-  let cash = {};
-  return function(n) {
-    let summ = 0;
-    for (let i = 0; i <= n; i++) {
-      summ += i;
-    }
-    if (cash[n] == undefined) {
-      cash[n] = summ;
-      console.log(`${cash[n]} Новое значение`);
-    } else {
-      console.log(`${cash[n]} Из кеша`);
-    }
-  };
+function sum(n) {
+  let summ = 0;
+  for (let i = 0; i <= n; i++) {
+    summ += i;
+  }
+  if (sum[n] == undefined) {
+    sum[n] = summ;
+    console.log(`${sum[n]} Новое значение`);
+  } else {
+    console.log(`${sum[n]} Из кеша`);
+  }
 }
 
-let sum = sum1();
 
 sum(5); // 15 Значение кешировано
 sum(5); // 15 Значение взято из кэша
 
 sum(6); // 21 Кешировано
 sum(6); // 21 Значение взято из кэша
-// console.log(sum1(6));
 // console.log(sum1(7));
