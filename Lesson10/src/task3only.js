@@ -1,29 +1,20 @@
 // * TASK 3
 
 let tegs = {
-  string: "",
-  depth: 0, // переменная которя будет считать куда вставлять.
-  add: function(teg, add) {
-    this.string =
-      this.string.slice(0, this.depth) +
-      this.$(teg, add) +
-      this.string.slice(this.depth, this.string.length);
-    this.depth += teg.length + 2; // +2 это скобуи побокам <> 
-    if (add != undefined) {
-      this.depth += add.length;
-    }
+  tegArr: { tBegin: [], tEnd: [] },
+  add: function(teg, content = "") {
+    this.tegArr.tBegin.push(`<${teg}>`);
+    this.tegArr.tBegin.push(`${content}`);
+    this.tegArr.tEnd.unshift(`</${teg}>`);
     return this;
   },
   render: function() {
-    let ret = this.string;
-    this.string = "";
-    this.depth = 0;
-    return ret;
-  },
-  $: function(teg, content) {
-    return `<${teg}>` + (content != undefined ? content : "") + `</${teg}>`;
+    let joinArr = this.tegArr.tBegin.concat(this.tegArr.tEnd);
+    this.tegArr = { tBegin: [], tEnd: [] };
+    return joinArr.join("");
   }
 };
+
 
 var ezjQuery = tegs;
 var helloList = ezjQuery
