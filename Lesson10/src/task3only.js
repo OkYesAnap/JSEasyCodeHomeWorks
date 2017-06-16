@@ -8,7 +8,7 @@ let tegs = {
       this.string.slice(0, this.depth) +
       this.$(teg, add) +
       this.string.slice(this.depth, this.string.length);
-    this.depth += teg.length + 2;
+    this.depth += teg.length + 2; // +2 это скобуи побокам <> 
     if (add != undefined) {
       this.depth += add.length;
     }
