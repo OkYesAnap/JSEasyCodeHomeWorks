@@ -1,4 +1,4 @@
-'use strict';
+//'use strict';
 
 // Legolas Task !
 
@@ -281,11 +281,16 @@ console.log(openBraces([25, 10, [10, [15]]]));
 let junior = {};
 
 // fn.length == arguments.length
-
+let func = {};
 function addMethod(object, name, fn) {
-   object[fn.length] = fn;
-   object[name] = (...args) => {object[args.length]()};
+  func[fn.length] = fn;
+  object[name] = (...args) => {
+ //   console.log(fn);
+   return func[args.length]();
+  };
 }
+
+
 
 addMethod(junior, 'ok', function() {
   console.log('zero arguments');
@@ -300,8 +305,11 @@ addMethod(junior, 'ok', function(one, two, three) {
   console.log('three arguments');
 });
 
- junior.ok(); //'zero arguments'
- junior.ok(1); //'one arguments'
- junior.ok(1, 2); // 'two arguments'
- junior.ok(1, 2, 3); // 'three arguments'
- junior.ok(1);
+  junior.ok(); //'zero arguments'
+  junior.ok(1); //'one arguments'
+  junior.ok(1, 2); // 'two arguments'
+  junior.ok(1, 2, 3); // 'three arguments'
+  junior.ok(1); // 'three arguments'
+
+ 
+ 
