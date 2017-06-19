@@ -34,7 +34,7 @@ function CreatePhoneBook() {
   };
   /// add new user to the closure
   this.addUser = function(telNum, fName, sName, localId = id) {
-    users[localId] = {id: localId, telNum, fName, sName };
+    users[localId] = { id: localId, telNum, fName, sName };
     if (localId == id) {
       id++;
     }
@@ -58,7 +58,7 @@ function CreatePhoneBook() {
   /// sort by column
   this.sortBy = function(sortVal) {
     return users.sort(function(a, b) {
-       return a[sortVal] < b[sortVal];
+      return a[sortVal] < b[sortVal];
     });
   };
 }
@@ -79,5 +79,3 @@ PhoneBook.delUser("Panaseyko5");
 //console.log(PhoneBook.searchUser("Panaseyko2")[0]);
 PhoneBook.changeContent(5, "123", "312", "123");
 console.log(PhoneBook.sortBy("telNum"));
-
-
