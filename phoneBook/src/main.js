@@ -15,6 +15,12 @@
 function CreatePhoneBook() {
   let users = []; /// closure array for users
   let id = 0;
+  let upDownSort = true;
+  this.byId = function(localId) {
+    return users.filter(function(val) {
+      return localId == val.id;
+    });
+  };
   /// format from xxxxxxxxxx to (xxx) xx-xx-xxx
   this.addChars = function(telNum, chars, ...args) {
     //(phone, string of chars to add, array of places to add)
@@ -34,10 +40,10 @@ function CreatePhoneBook() {
   };
   /// add new user to the closure
   this.addUser = function(telNum, fName, sName, localId = id) {
-    users[localId] = { id: localId, telNum, fName, sName };
     if (localId == id) {
       id++;
     }
+    users[localId] = { id: localId, telNum, fName, sName };
   };
   /// delete user by fName/sName
   this.delUser = function(dellStr) {
@@ -57,25 +63,31 @@ function CreatePhoneBook() {
   };
   /// sort by column
   this.sortBy = function(sortVal) {
+    upDownSort = upDownSort ? false : true;
     return users.sort(function(a, b) {
-      return a[sortVal] < b[sortVal];
+      return upDownSort ? a[sortVal] > b[sortVal] : a[sortVal] < b[sortVal];
     });
   };
 }
 
 PhoneBook = new CreatePhoneBook();
-console.log(PhoneBook.addChars("0993378130", "() --", 0, 4, 5, 8, 11)); //
+// console.log(PhoneBook.addChars("0993378130", "() --", 0, 4, 5, 8, 11)); //
 
-console.log(PhoneBook.numberOnly("0993378130"));
-console.log(PhoneBook.numberOnly("0993378130"));
+// console.log(PhoneBook.numberOnly("0993378130"));
+// console.log(PhoneBook.numberOnly("0993378130"));
 
 for (let i = 0; i < 10; i++) {
   PhoneBook.addUser(`099337813${i}`, `Andrew${i}`, `Panaseyko${i}`);
 }
 
-console.log(PhoneBook);
-PhoneBook.delUser("Andrew1");
-PhoneBook.delUser("Panaseyko5");
-//console.log(PhoneBook.searchUser("Panaseyko2")[0]);
-PhoneBook.changeContent(5, "123", "312", "123");
-console.log(PhoneBook.sortBy("telNum"));
+// console.log(PhoneBook);
+
+// PhoneBook.delUser("Andrew1");
+
+// PhoneBook.delUser("Panaseyko5");
+
+// //console.log(PhoneBook.searchUser("Panaseyko2")[0]);
+
+// PhoneBook.changeContent(5, "123", "312", "123");
+
+// console.log(PhoneBook.sortBy("telNum"));
