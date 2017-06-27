@@ -54,7 +54,7 @@
 		}
 		function editUser(UserId) {
 			let user = PhoneBook.byId(UserId);
-			console.log(user[0]);
+			console.log(user);
 			let tblContent = `
 			<tr><td>Имя    </td><td><input id = "fName" value='${user[0].fName}'></input></td></tr><tr></tr>
 			<tr><td>Фамилия</td><td><input id = "sName" value='${user[0].sName}'></input></td></tr><tr></tr>
