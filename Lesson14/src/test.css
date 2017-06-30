@@ -1,0 +1,21 @@
+h1, body, .center {
+  text-align: center;
+  margin:0 30% ;
+}
+
+div{
+  padding: 0 20px 5px;
+  border: 2px solid green;
+  text-align: left;
+}
+p{
+  font-size: 20px;
+  font-weight: bold;
+}
+button {
+   font-size: 25px;
+   margin-left: 3rem;
+}
+ul>li {
+  list-style: none;
+}
