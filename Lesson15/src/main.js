@@ -12,12 +12,14 @@ TASK 0
 
 
 const solution = str => {
-  for(let i = 97; i <=122; i++){
-    if(!str.match(String.fromCharCode(i)))
-    {return false};
+  for (let i = 97; i <= 122; i++) {
+    if (!str.match(String.fromCharCode(i))) {
+      return false;
+    }
   }
   return true;
 };
+
 
 
 console.log(solution("wyyga")); // false
