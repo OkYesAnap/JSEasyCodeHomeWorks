@@ -84,67 +84,75 @@ console.log(replaser(items));
 */
 
 class testConstructor {
-  constructor(question, ...answers) {
-    this.answers = [];
-    this.newInput = [];
-    this.newLbl = [];
-    this.question = question;
-    answers.forEach((val, ind) => this.answers[ind] = val);
-  }
-  showQuestion() {
-    this.newDiv = document.createElement("div");
-    this.newParagraph = document.createElement("p");
-    document.body.appendChild(this.newDiv);
-    this.newDiv.appendChild(this.newParagraph);
-    this.newParagraph.textContent = this.question;
-    this.showAnswers();
-  }
-  showAnswers() {
-    this.answers.forEach((val, ind) => {
-      this.newForm = document.createElement('form');
-      this.newInput[ind] = document.createElement("input");
-      this.newInput[ind].type = "checkbox";
-      this.newInput[ind].id = 'uns_' + ind;
-      this.newLbl[ind] = document.createElement("label");
-      this.newDiv.appendChild(this.newForm);
-      this.newForm.appendChild(this.newInput[ind]);
-      this.newForm.appendChild(this.newLbl[ind]);
-      this.newLbl[ind].textContent = this.answers[ind];
-    });
+  render(questions){
+    let main = document.createElement('main');
+    document.body.appendChild(main);
+    questions.forEach((val, indUl) => {
+      let tests = document.createElement('h3');
+      tests.innerText = val.qest;
+      main.appendChild(tests);
+      let ul = document.createElement('ul');
+      ul.id = 'ul_' + indUl;
+      main.appendChild(ul);
+      val.uns.forEach((val, indLi) => {
+        let li = document.createElement('li');
+        ul.appendChild(li);
+        li.innerHTML = `<input type = "checkbox" id = "chb_${indUl}${indLi}">` + val;
+        ;
+      })
+    })
+    const btn = document.createElement('button');
+    main.appendChild(btn);
+    btn.onclick = () => {
+      questions.forEach((val, ind) => {
+        let checkUnswers = document.getElementById(`chb_${ind}${val.trueUns}`);
+        let ul = document.getElementById('ul_' + ind);
+        let uns = document.getElementById(`uns_${ind}`);
+        if (!uns) {
+          uns = document.createElement('p');
+          uns.id = `uns_${ind}`;
+          ul.appendChild(uns);
+        }
+        if (checkUnswers.checked) {
+          uns.parentElement.style = 'background : green; color : white';
+          uns.textContent = (`Ответ ${ind + 1} правильно`);
+        } else {
+          uns.parentElement.style = 'background : red; color : white';
+          uns.textContent = (`Ответ ${ind + 1} неправильно`);
+        }
+      })
+    };
+    btn.textContent = "Проверить результаты";
   }
 }
 
-
-let question1 = new testConstructor(
-  "В каком году был создан JS?",
-  "1995",
-  "2000",
-  "2005",
-  "2010"
-);
-let question2 = new testConstructor(
-  'Что значит "Утиная типизация"?',
-  "Явная типизация",
-  "Неявная типизация",
-  'Новая версия "Куриной типизации"',
-  "42"
-);
-let question3 = new testConstructor(
-  'Кака функция при вызове отобразит сумму "6" при вызове sum(1)(2)(3)',
-  "function sum(x, y, z){return x + y + z}",
+let app = new testConstructor();
+const questions = [{
+  qest: "В каком году был создан JS?",
+  uns: ["1995", "2000", "2005", "2010"],
+  trueUns: 0,
+},
+{
+  qest: 'Что значит "Утиная типизация"?',
+  uns: ["Явная типизация",
+    "Неявная типизация",
+    'Новая версия "Куриной типизации"',
+    "42"],
+  trueUns: 1,
+},
+{
+  qest: 'Какая функция отобразит сумму "6" при вызове sum(1)(2)(3)',
+  uns:["function sum(x, y, z){return x + y + z}",
   "function sum(...a){return a[0] + a[1] + a[2]}",
   "sum = (x, y, z) => x + y + z",
-  'sum = x => y => z => x + y + z'
-);
-
-question1.showQuestion();
-question2.showQuestion();
-question3.showQuestion();
+  'sum = x => y => z => x + y + z'],
+  trueUns: 3,
+}
+]
 
 
-const btn = document.createElement('button');
-document.body.appendChild(btn);
-btn.textContent = "Проверить результаты";
+app.render(questions);
+
 
 /* 
 TASK 3
@@ -156,5 +164,3 @@ TASK 3
   Изначально на странице должен быть только <body>, 
   вызывая методы объекта нужно создать dom-элементы
 */
-
-// app.render();
