@@ -1,0 +1,19 @@
+
+main{
+    width: 600px;
+    margin: auto;
+    border: 2px solid yellow;
+    background: linear-gradient(to top, #fefcea, #f1da36);
+    padding: 10px;
+}
+ul{
+    list-style: none;
+}
+
+li {
+    /*border: 3px solid blue;*/
+}
+
+.round{
+    border-radius: 50%;
+}

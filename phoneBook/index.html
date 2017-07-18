@@ -10,8 +10,7 @@
 </head>
 
 <body class="main">
-	<script src="./src/main.js"></script>
-	<div class="phone">
+	<div class="phone" id = "phone">
 		<div class="display">
 			<table id="phonesTable">
 			</table>
@@ -20,71 +19,10 @@
 		<button onclick="byFName()">Имени</button>
 		<button onclick="bySName()">Фамилии</button>
 		<button onclick="addUser()">ДОБАВИТЬ ПОЛЬЗОВАТЕЛЯ</button>
+	    <button onclick="phoneNumber()">НАБРАТЬ НОМЕР ТЕЛЕФОНА</button>
+
 	</div>
-	<script>
-		var table = document.getElementById("phonesTable");
-		sortByTbl(PhoneBook.sortBy("telNum"));
-		function byPhone() {
-			sortByTbl(PhoneBook.sortBy("telNum"));
-		}
-		function byFName() {
-			sortByTbl(PhoneBook.sortBy("fName"));
-		}
-		function bySName() {
-			sortByTbl(PhoneBook.sortBy("sName"));
-		}
-		function sortByTbl(tblArr) {
-			let tblContent = '';
-			let col = 0;
-			tblArr.forEach(function (elem) {
-				tblContent += `
-				<tr onclick="showHide(${col})" id="col_${col}">
-					<td colspan = "2">${elem.fName} ${elem.sName}<br>${PhoneBook.addChars(elem.telNum, "() --", 0, 4, 5, 8, 11)}</td>
-				</tr>
-				<tr id="col_${col}_func">
-				<td><div onclick="PhoneBook.delUser('${elem.fName}'); sortByTbl(PhoneBook.sortBy('telNum'))">Удалить</div></td>
-				<td><div onclick="editUser(${elem.id})">Редактировать</div></td>
-				</tr>`;
-				col++;
-			});
-			table.innerHTML = tblContent
-		}
-		function showHide(trId){
-			document.getElementById(`col_${trId}_func`).style.display = 'inline';
-		}
-		function editUser(UserId) {
-			let user = PhoneBook.byId(UserId);
-			console.log(user);
-			let tblContent = `
-			<tr><td>Имя    </td><td><input id = "fName" value='${user[0].fName}'></input></td></tr><tr></tr>
-			<tr><td>Фамилия</td><td><input id = "sName" value='${user[0].sName}'></input></td></tr><tr></tr>
-			<tr><td>Телефон</td><td><input id = "Tel" value='${user[0].telNum}'></input></td></tr><tr></tr>
-			<tr><td onclick ="saveFunc(${UserId}); sortByTbl(PhoneBook.sortBy('sNam'))">Сохранить</td>
-			<td onclick ="sortByTbl(PhoneBook.sortBy('sNam'))">Отмена</td></tr>`
-			table.innerHTML = tblContent;
-		}
-		function saveFunc(UserId){
-			let fNam = document.getElementById("fName");
-			let sNam = document.getElementById("sName");
-			let tel  = document.getElementById("Tel");
-			PhoneBook.changeContent(UserId, tel.value, fNam.value, sNam.value);
-		}
-		function addUser(){
-			let tblContent = `
-			<tr><td>Имя    </td><td><input id = "fName" value=''></input></td></tr><tr></tr>
-			<tr><td>Фамилия</td><td><input id = "sName" value=''></input></td></tr><tr></tr>
-			<tr><td>Телефон</td><td><input id = "Tel" value=''></input></td></tr><tr></tr>
-			<tr><td onclick ="saveFunc1(); sortByTbl(PhoneBook.sortBy('sNam'))">Сохранить</td>
-			<td onclick ="sortByTbl(PhoneBook.sortBy('sNam'))">Отмена</td></tr>`
-			table.innerHTML = tblContent;
-		}
-		function saveFunc1(UserId){
-			let fNam = document.getElementById("fName");
-			let sNam = document.getElementById("sName");
-			let tel  = document.getElementById("Tel");
-			PhoneBook.changeContent(UserId, tel.value, fNam.value, sNam.value);
-		}
-	</script>
+	<script src="./src/main.js"></script>
 
 </body>
 
