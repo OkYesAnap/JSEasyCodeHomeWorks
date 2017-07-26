@@ -51,12 +51,15 @@ Linux:
 кликаем сюда -> []|[]|[x] <- загорается тут
                 []|[]|[x]
 */
+
+let size = 2;
+
 const table = document.createElement("table");
 document.body.appendChild(table);
 let str = '';
-for (let i = -2; i <= 2; i++) {
+for (let i = -size; i <= size; i++) {
 	str += '<tr>';
-	for (let j = -2; j <= 2; j++) {
+	for (let j = -size; j <= size; j++) {
 		str += `<td id = "${i}_${j}" style = "width: 50px; height:50px; border: 1px solid black"></td>`;
 	}
 	str += '</tr>';

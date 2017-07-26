@@ -62,7 +62,7 @@ class carousel {
         let imgDivs = document.getElementsByClassName('images');
         console.log(imgDivs, imgDivs.length);
         for (let i = 0; i < imgDivs.length; i++) {
-            imgDivs[i].innerHTML = '<img src = "' + this.currentImg()
+            imgDivs[i].innerHTML = '<img src = "./JSEasyCodeHomeWorks/Lesson17/carousel/' + this.currentImg()
                 + '.jpg">'; 
         }
     }
