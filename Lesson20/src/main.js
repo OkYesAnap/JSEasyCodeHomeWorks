@@ -120,6 +120,8 @@ document.body.appendChild(button);
 let xhr = new XMLHttpRequest();
 
 
+xhr.open('GET', url + "users", true);
+xhr.send();
 xhr.addEventListener("readystatechange", () => {
   if (xhr.readyState == 4) {
     button.addEventListener("click", () => {
@@ -128,8 +130,6 @@ xhr.addEventListener("readystatechange", () => {
     )
   }
 });
-xhr.open('GET', url + "PAV", true);
-xhr.send();
 
 // GET - для получения данных
 // Изначальноо используется для  получения документов в формате HTML
@@ -142,4 +142,3 @@ xhr.send();
 // FormData => Content-Type:'multipart/form-data' - значения в фодрме
 //             Content-Type:'application/x-www-form-urlencoded-file, Binary data'
 // В зависимости от файла должен быть соотвествуюший заголовок
-
